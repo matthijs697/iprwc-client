@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { AuthorizationService } from '../shared/authorization.service';
+import {AuthorizationService} from '../shared/authorization.service';
 
-import { User } from '../user/user';
+import {User} from '../user/user';
 
 @Component({
     selector: 'app-home',
@@ -38,6 +38,6 @@ export class HomeComponent {
 
         let user: User = this.authService.getAuthenticator();
 
-        this.userName = user.fullName;
+        this.userName = user.firstname;
     }
 }

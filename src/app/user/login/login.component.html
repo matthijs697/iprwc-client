@@ -11,7 +11,7 @@
         <form name="loginForm" #loginForm="ngForm" (ngSubmit)="login()">
 
             <mat-form-field class="full-width">
-                <input matInput type="email" name="email" placeholder="E-mailadres" required [(ngModel)]="user.emailAddress" #email="ngModel" />
+                <input matInput type="email" name="email" placeholder="E-mailadres" required [(ngModel)]="user.email" #email="ngModel" />
                 <mat-error [hidden]="email.valid">
                     Dit veld is verplicht
                 </mat-error>

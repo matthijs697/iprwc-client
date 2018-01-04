@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { ListDataSource } from './list.datasource';
+import {ListDataSource} from './list.datasource';
 
-import { UserService } from '../user.service';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'user-list',
@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class ListComponent {
 
-  public displayedColumns = ['fullName', 'postcode', 'streetnumber', 'emailAddress'];
+  public displayedColumns = ['firstname', 'zipcode', 'street', 'email'];
   public dataSource = null;
 
   constructor(private userService: UserService) {
@@ -21,7 +21,10 @@ export class ListComponent {
   private getUsersList() {
     this.userService.getAll().subscribe(
         users => {
-            this.dataSource = new ListDataSource(users);
+          users.forEach(function(entry) {
+            console.log(entry.firstname);
+          });
+          this.dataSource = new ListDataSource(users);
         }
     );
   }
