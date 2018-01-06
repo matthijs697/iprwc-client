@@ -1,44 +1,69 @@
 <h1>Users</h1>
 <div class="user-list mat-elevation-z8" *ngIf="hasData()">
-    <mat-table #table [dataSource]="dataSource">
-        <ng-container matColumnDef="firstname">
-            <mat-header-cell *matHeaderCellDef>Voornaam</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.firstname" #firstname="ngModel" />
-              </mat-form-field>
-            </mat-cell>
-        </ng-container>
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="firstname">
+      <mat-header-cell *matHeaderCellDef>Voornaam</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput [(ngModel)]="element.firstname" (change)="onUpdate(element)" #firstname="ngModel" />
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="zipcode">
-            <mat-header-cell *matHeaderCellDef>Postcode</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.zipcode" #zipcode="ngModel" />
-              </mat-form-field>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="suffix">
+      <mat-header-cell *matHeaderCellDef>Tussenvoegsel</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput [(ngModel)]="element.suffix" (change)="onUpdate(element)" #suffix="ngModel"  />
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="street">
-            <mat-header-cell *matHeaderCellDef>Straat + Nr</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.street" #street="ngModel" />
-              </mat-form-field>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="lastname">
+      <mat-header-cell *matHeaderCellDef>Achernaam</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput [(ngModel)]="element.lastname" (change)="onUpdate(element)" #lastname="ngModel"  />
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="email">
-            <mat-header-cell *matHeaderCellDef>E-mailadres</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput type="email" [(ngModel)]="element.email" #email="ngModel"  />
-              </mat-form-field>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="zipcode">
+      <mat-header-cell *matHeaderCellDef>Postcode</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput [(ngModel)]="element.zipcode" (change)="onUpdate(element)" #zipcode="ngModel" />
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    <ng-container matColumnDef="street">
+      <mat-header-cell *matHeaderCellDef>Straat + Nr</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput [(ngModel)]="element.street" (change)="onUpdate(element)" #street="ngModel" />
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>E-mailadres</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput type="email" [(ngModel)]="element.email" (change)="onUpdate(element)" #email="ngModel"  />
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="onDelete(element)"><mat-icon>delete</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 
 </div>

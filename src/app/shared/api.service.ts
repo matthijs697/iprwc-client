@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
-import { AuthorizationService } from './authorization.service';
+import {AuthorizationService} from './authorization.service';
 
 @Injectable()
 export class ApiService {
@@ -46,7 +46,7 @@ export class ApiService {
     return this.http.post(uri, data, { headers: headers });
   }
 
-  public put<T>(path: string, data: string, queryParameters?: Object): Observable<T> {
+  public put<T>(path: string, data: Object, queryParameters?: Object): Observable<T> {
     let uri = this.createURI(path, queryParameters);
     let headers = this.createRequestHeaders();
     return this.http.put(uri, data, { headers: headers });

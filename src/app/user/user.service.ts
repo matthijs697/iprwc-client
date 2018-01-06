@@ -16,18 +16,18 @@ export class UserService {
   }
 
   public register(user: User): void {
-    let data = {
-      firstname: user.firstname,
-      suffix: user.suffx,
-      lastname: user.lastname,
-      zipcpde: user.zipcode,
-      street: user.street,
-      email: user.email,
-      password: user.password,
-      role: 'GUEST'
-    };
+    // let data = {
+    //   firstname: user.firstname,
+    //   suffix: user.suffx,
+    //   lastname: user.lastname,
+    //   zipcpde: user.zipcode,
+    //   street: user.street,
+    //   email: user.email,
+    //   password: user.password,
+    //   role: 'GUEST'
+    // };
 
-    this.api.post<void>('users', data).subscribe(
+    this.api.post<void>('users', user).subscribe(
         data => {
             this.goHome();
         }, error => {
@@ -48,8 +48,14 @@ export class UserService {
     );
   }
 
-  public update() {
-
+  public update(user: User) {
+    this.api.put<User>('users/' + user.id, user).subscribe(
+      res => {
+        console.log('[DEBUG] Updated user: ' + res.email);
+      }, err => {
+        console.log(err.message);
+      }
+    );
   }
 
   public logout() {
@@ -59,5 +65,15 @@ export class UserService {
 
   private goHome() {
     this.router.navigate(['']);
+  }
+
+  public delete(user: User) {
+    this.api.delete<User>('users/' + user.id).subscribe(
+      res => {
+        console.log('[DEBUG] Deleted user: ' + user.email);
+      }, err => {
+        console.log(err.message);
+      }
+    );
   }
 }

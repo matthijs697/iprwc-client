@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {ListUserDataSource} from './list.datasource';
 
 import {UserService} from '../user.service';
+import {User} from '../user';
 
 @Component({
   selector: 'user-list',
@@ -11,7 +12,7 @@ import {UserService} from '../user.service';
 })
 export class ListUserComponent {
 
-  public displayedColumns = ['firstname', 'zipcode', 'street', 'email'];
+  public displayedColumns = ['firstname', 'suffix', 'lastname', 'zipcode', 'street', 'email', 'actions'];
   public dataSource = null;
 
   constructor(private userService: UserService) {
@@ -21,9 +22,6 @@ export class ListUserComponent {
   private getUsersList() {
     this.userService.getAll().subscribe(
         users => {
-          users.forEach(function(entry) {
-            console.log(entry.firstname);
-          });
           this.dataSource = new ListUserDataSource(users);
         }
     );
@@ -31,5 +29,16 @@ export class ListUserComponent {
 
   public hasData() {
     return this.dataSource !== null;
+  }
+
+  onDelete(element: User) {
+    this.userService.delete(element);
+    setTimeout(callback => {
+      this.getUsersList();
+    }, 1000);
+  }
+
+  onUpdate(element: User) {
+    this.userService.update(element);
   }
 }
