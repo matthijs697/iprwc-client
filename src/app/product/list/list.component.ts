@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 
+import {ListProductDataSource} from './list.datasource';
+
 import {ProductService} from '../product.service';
+import {Product} from '../product';
 
 @Component({
   selector: 'product-list',
@@ -9,7 +12,8 @@ import {ProductService} from '../product.service';
 })
 export class ListProductComponent {
 
-  public products = null;
+  public displayedColumns = ['name', 'imgUrl', 'description', 'price', 'actions'];
+  public dataSource: ListProductDataSource = null;
 
   constructor(private productService: ProductService) {
     this.getProductsList();
@@ -18,9 +22,20 @@ export class ListProductComponent {
   private getProductsList() {
     this.productService.getAll().subscribe(
       products => {
-        this.products = products;
+      this.dataSource = new ListProductDataSource(products);
+      console.log('Refresh');
       }
     );
   }
 
+  public hasData() {
+    return this.dataSource !== null;
+  }
+
+  onDelete(element: Product) {
+    this.productService.delete(element);
+    setTimeout(callback => {
+      this.getProductsList();
+    }, 1000);
+  }
 }

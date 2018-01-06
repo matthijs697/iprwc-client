@@ -14,6 +14,8 @@ export class ListProductDataSource extends DataSource<any> {
     return Observable.of(this.product);
   }
 
-  public disconnect() { }
+  public disconnect() {
+
+  }
 
 }
