@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
-import { AuthorizationService } from '../authorization.service';
+import {AuthorizationService} from '../authorization.service';
 
 @Component({
     selector: 'app-header',
@@ -10,6 +10,7 @@ import { AuthorizationService } from '../authorization.service';
     styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+
     public authenticated: boolean = false;
 
     constructor(private authService: AuthorizationService, private router: Router) {

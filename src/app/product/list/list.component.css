@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.product-list-container {
+  display: block;
+  height: 100%;
+}
+
+.product-card {
+  max-width: 300px;
+}
+
+.product-image {
+  max-height: 200px;
+}

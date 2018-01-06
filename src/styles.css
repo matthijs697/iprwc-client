@@ -4,11 +4,14 @@
 body {
   margin: 0px;
   padding: 0px;
+  height: 100vh;
   font-family: sans-serif;
+  background-color: #EEE;
 }
 
 main {
   padding: 20px;
+  height: 100%;
 }
 
 a {

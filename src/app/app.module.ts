@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { RoutesModule } from './routes.module';
-import { PublicModule } from './public.module';
+import {RoutesModule} from './routes.module';
+import {PublicModule} from './public.module';
 
-import { SharedModule } from './shared/shared.module';
-import { HomeModule } from './home/home.module';
-import { UserModule } from './user/user.module';
+import {SharedModule} from './shared/shared.module';
+import {HomeModule} from './home/home.module';
+import {UserModule} from './user/user.module';
+import {ProductModule} from './product/product.module';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { AppComponent } from './app.component';
     PublicModule,
     SharedModule,
     HomeModule,
-    UserModule
+    UserModule,
+    ProductModule
   ],
   exports: [ PublicModule ],
   declarations: [ AppComponent ],

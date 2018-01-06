@@ -1,19 +1,15 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 import {
-  NoConflictStyleCompatibilityMode,
-  MatToolbarModule,
-  MatCardModule,
-  MatTableModule,
-  MatButtonModule,
-  MatInputModule
+  MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatInputModule, MatTableModule, MatToolbarModule,
+  NoConflictStyleCompatibilityMode
 } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import 'hammerjs';
 
 export const publicModules = [
@@ -29,6 +25,8 @@ export const publicModules = [
   MatTableModule,
   MatButtonModule,
   MatInputModule,
+  MatGridListModule,
+  MatIconModule,
   FlexLayoutModule
 ];
 

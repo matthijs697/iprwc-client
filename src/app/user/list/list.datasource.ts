@@ -4,7 +4,7 @@ import 'rxjs/add/observable/of';
 
 import {User} from '../user';
 
-export class ListDataSource extends DataSource<any> {
+export class ListUserDataSource extends DataSource<any> {
 
   constructor(private users: User[]) {
     super();

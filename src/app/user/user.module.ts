@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
-import { PublicModule } from '../public.module';
+import {PublicModule} from '../public.module';
 
-import { SharedModule } from '../shared/shared.module';
-import { UserService } from './user.service';
+import {SharedModule} from '../shared/shared.module';
+import {UserService} from './user.service';
 
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { ListComponent } from './list/list.component';
+import {RegisterComponent} from './register/register.component';
+import {LoginComponent} from './login/login.component';
+import {ListUserComponent} from './list/list.component';
 
 @NgModule({
   imports: [ PublicModule, SharedModule ],
   exports: [ LoginComponent ],
-  declarations: [ RegisterComponent, LoginComponent, ListComponent ],
+  declarations: [ RegisterComponent, LoginComponent, ListUserComponent ],
   providers: [ UserService ]
 })
 export class UserModule { }

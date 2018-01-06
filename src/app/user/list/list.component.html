@@ -3,22 +3,38 @@
     <mat-table #table [dataSource]="dataSource">
         <ng-container matColumnDef="firstname">
             <mat-header-cell *matHeaderCellDef>Voornaam</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{ element.firstname }}</mat-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-form-field>
+                <input matInput [(ngModel)]="element.firstname" #firstname="ngModel" />
+              </mat-form-field>
+            </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="zipcode">
             <mat-header-cell *matHeaderCellDef>Postcode</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{ element.zipcode }}</mat-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-form-field>
+                <input matInput [(ngModel)]="element.zipcode" #zipcode="ngModel" />
+              </mat-form-field>
+            </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="street">
-            <mat-header-cell *matHeaderCellDef>Straat</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{ element.street }}</mat-cell>
+            <mat-header-cell *matHeaderCellDef>Straat + Nr</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-form-field>
+                <input matInput [(ngModel)]="element.street" #street="ngModel" />
+              </mat-form-field>
+            </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="email">
             <mat-header-cell *matHeaderCellDef>E-mailadres</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-form-field>
+                <input matInput type="email" [(ngModel)]="element.email" #email="ngModel"  />
+              </mat-form-field>
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

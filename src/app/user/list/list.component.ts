@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {ListDataSource} from './list.datasource';
+import {ListUserDataSource} from './list.datasource';
 
 import {UserService} from '../user.service';
 
@@ -9,7 +9,7 @@ import {UserService} from '../user.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
 })
-export class ListComponent {
+export class ListUserComponent {
 
   public displayedColumns = ['firstname', 'zipcode', 'street', 'email'];
   public dataSource = null;
@@ -24,7 +24,7 @@ export class ListComponent {
           users.forEach(function(entry) {
             console.log(entry.firstname);
           });
-          this.dataSource = new ListDataSource(users);
+          this.dataSource = new ListUserDataSource(users);
         }
     );
   }
