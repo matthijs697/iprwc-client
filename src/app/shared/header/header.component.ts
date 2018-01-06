@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {AuthorizationService} from '../authorization.service';
+import {User} from '../../user/user';
 
 @Component({
     selector: 'app-header',
@@ -11,28 +12,38 @@ import {AuthorizationService} from '../authorization.service';
 })
 export class HeaderComponent {
 
-    public authenticated: boolean = false;
+  public authenticated: boolean = false;
+  public authenticator: User = null;
 
-    constructor(private authService: AuthorizationService, private router: Router) {
-        this.authenticated = authService.hasAuthorization();
-        authService.authorized$.subscribe(
-            authorized => {
-                this.authenticated = authorized;
-            }
-        );
-    }
+  constructor(private authService: AuthorizationService, private router: Router) {
+    this.authenticated = authService.hasAuthorization();
+    authService.authorized$.subscribe(
+        authorized => {
+            this.authenticated = authorized;
+        }
+    );
+    this.authenticator = authService.getAuthenticator();
+    console.log(this.authenticator.role);
+  }
 
-    public goHome() {
-        this.router.navigate(['']);
-    }
+  public goHome() {
+    this.router.navigate(['']);
+  }
 
-    public goUsers() {
-        this.router.navigate(['users']);
-    }
+  public goUsers() {
+    this.router.navigate(['users']);
+  }
 
-    public logout() {
-        this.authService.deleteAuthorization();
+  public logout() {
+    this.authService.deleteAuthorization();
+    this.goHome();
+  }
 
-        this.goHome();
-    }
+  public goProducts() {
+    this.router.navigate(['products/overview']);
+  }
+
+  public goLogin() {
+    this.router.navigate(['login']);
+  }
 }

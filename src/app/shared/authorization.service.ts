@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
+import {User} from '../user/user';
 
 @Injectable()
 export class AuthorizationService {
     private login: string = null;
     private password: string = null;
-    private authenticator: Object = null;
+    private authenticator: User = null;
 
     public authorized$ = new Subject<boolean>();
 
@@ -17,6 +18,10 @@ export class AuthorizationService {
         return this.login !== null && this.password !== null;
     }
 
+    public hasRole(role: string): boolean {
+      return this.authenticator.role === role;
+    }
+
     public setAuthorization(login: string, password: string): void {
         this.login = login;
         this.password = password;
@@ -26,9 +31,9 @@ export class AuthorizationService {
         this.authenticator = authenticator;
 
         let authorization = {
-            login: this.login,
-            password: this.password,
-            authenticator: this.authenticator
+          login: this.login,
+          password: this.password,
+          authenticator: this.authenticator
         };
 
         let authorizationString = JSON.stringify(authorization);
@@ -72,7 +77,7 @@ export class AuthorizationService {
         return 'Basic ' + btoa(this.login + ':' + this.password);
     }
 
-    public getAuthenticator(): Object {
+    public getAuthenticator(): User {
         return this.authenticator;
     }
 

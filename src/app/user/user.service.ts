@@ -23,7 +23,8 @@ export class UserService {
       zipcpde: user.zipcode,
       street: user.street,
       email: user.email,
-      password: user.password
+      password: user.password,
+      role: 'GUEST'
     };
 
     this.api.post<void>('users', data).subscribe(
@@ -45,6 +46,10 @@ export class UserService {
             alert('Het inloggen is mislukt');
         }
     );
+  }
+
+  public update() {
+
   }
 
   public logout() {

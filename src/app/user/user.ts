@@ -6,6 +6,7 @@ export class User {
     public zipcode?: string,
     public street?: string,
     public email?: string,
-    public password?: string)
+    public password?: string,
+    public role?: string)
   { }
 }

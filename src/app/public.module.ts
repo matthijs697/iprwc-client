@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {
   MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatInputModule, MatTableModule, MatToolbarModule,
-  NoConflictStyleCompatibilityMode
+  MatTooltipModule, NoConflictStyleCompatibilityMode
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import 'hammerjs';
@@ -27,6 +27,7 @@ export const publicModules = [
   MatInputModule,
   MatGridListModule,
   MatIconModule,
+  MatTooltipModule,
   FlexLayoutModule
 ];
 

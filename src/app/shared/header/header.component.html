@@ -1,9 +1,12 @@
 <mat-toolbar color="primary">
-    <span routerLink="/" class="clickable">Lorem Ipsum applicatie</span>
-    <span class="fill-remaining-space"></span>
-    <div *ngIf="authenticated">
-        <button mat-raised-button class="mat-accent" (click)="goHome()">Home</button>
-        <button mat-raised-button class="mat-accent" (click)="goUsers()">Gebruikers</button>
-        <button mat-raised-button class="mat-warn" (click)="logout()">Uitloggen</button>
-    </div>
+  <span routerLink="/" class="clickable">Lorem Ipsum applicatie</span>
+  <span class="fill-remaining-space"></span>
+  <div *ngIf="authenticated">
+    <button mat-icon-button matTooltip="Naar hoofdpagina" (click)="goHome()"><mat-icon>home</mat-icon></button>
+    <button mat-icon-button matTooltip="Naar winkelwagen" ><mat-icon>shopping_cart</mat-icon></button>
+    <button mat-icon-button matTooltip="Beheer gebruikers" (click)="goUsers()" *ngIf="authenticator.role == 'ADMIN'"><mat-icon>group</mat-icon></button>
+    <button mat-icon-button matTooltip="Beheer producten" (click)="goProducts()" *ngIf="authenticator.role == 'ADMIN'"><mat-icon>perm_media</mat-icon></button>
+    <button *ngIf="authenticated" mat-icon-button matTooltip="Log uit" (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
+    <button *ngIf="!authenticated" mat-icon-button matTooltip="Log in" (click)="goLogin()"><mat-icon>exit_to_app</mat-icon></button>
+  </div>
 </mat-toolbar>
