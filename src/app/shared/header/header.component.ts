@@ -22,7 +22,8 @@ export class HeaderComponent {
             this.authenticated = authorized;
         }
     );
-    this.authService.authenticator$.subscribe(
+    this.authenticator = authService.getAuthenticator();
+    authService.authenticator$.subscribe(
       authenticator => {
         this.authenticator = authenticator;
       }
@@ -45,7 +46,7 @@ export class HeaderComponent {
   }
 
   public goProducts() {
-    this.router.navigate(['products/overview']);
+    this.router.navigate(['products']);
   }
 
   public goLogin() {

@@ -15,3 +15,7 @@
 .product-image {
   max-height: 200px;
 }
+
+.product-add {
+  padding-bottom: 10px;
+}

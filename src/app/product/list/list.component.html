@@ -1,4 +1,7 @@
 <h1>Producten</h1>
+<div class="product-add" fxLayoutAlign="end center">
+  <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
+</div>
 <div class="user-list mat-elevation-z8" *ngIf="hasData()">
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="name">

@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Nieuw product</h1>
+<div mat-dialog-content>
+  <form name="newProductForm" #newProductForm="ngForm">
+    <mat-form-field class="full-width">
+      <input matInput type="text" name="name" placeholder="Product naam" required [(ngModel)]="data.product.name" #name="ngModel" />
+      <mat-error [hidden]="name.valid">
+        Dit veld is verplicht
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="text" name="suffix" placeholder="Foto URL" [(ngModel)]="data.product.imgUrl" #imgUrl="ngModel" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="text" name="description" placeholder="Product omschrijving" required [(ngModel)]="data.product.description" #description="ngModel" />
+      <mat-error [hidden]="description.valid">
+        Dit veld is verplicht
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="text" name="price" placeholder="Product prijs" required [(ngModel)]="data.product.price" #price="ngModel" />
+      <mat-error [hidden]="price.valid">
+        Dit veld is verplicht
+      </mat-error>
+    </mat-form-field>
+
+    <!--<button mat-raised-button type="submit" class="mat-primary" [disabled]="!registerForm.valid">Registreren</button>-->
+
+    <div mat-dialog-actions fxLayoutAlign="end center">
+      <button mat-button (click)="onNoClick()">Annuleren</button>
+      <button mat-button [mat-dialog-close]="data.product" [disabled]="!newProductForm.valid" cdkFocusInitial>Aanmaken</button>
+    </div>
+  </form>
+
+  <!--<p>What's your favorite animal?</p>-->
+  <!--<mat-form-field>-->
+    <!--<input matInput tabindex="1" [(ngModel)]="data.animal">-->
+  <!--</mat-form-field>-->
+</div>
+

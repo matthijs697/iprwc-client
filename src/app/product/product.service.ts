@@ -37,7 +37,7 @@ export class ProductService {
   }
 
   public update(product: Product) {
-    this.api.put('products/' + product.id, product);
+    this.api.put<Product>('products/' + product.id, product).subscribe();
   }
 
   public delete(produtct: Product) {

@@ -6,7 +6,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {
-  MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatInputModule, MatTableModule, MatToolbarModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatGridListModule, MatIconModule, MatInputModule, MatTableModule, MatToolbarModule,
   MatTooltipModule, NoConflictStyleCompatibilityMode
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -28,6 +28,7 @@ export const publicModules = [
   MatGridListModule,
   MatIconModule,
   MatTooltipModule,
+  MatDialogModule,
   FlexLayoutModule
 ];
 
