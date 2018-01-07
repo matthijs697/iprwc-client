@@ -16,6 +16,7 @@ export class UserService {
   }
 
   public register(user: User): void {
+    user.role = 'GUEST';
     // let data = {
     //   firstname: user.firstname,
     //   suffix: user.suffx,
@@ -68,7 +69,7 @@ export class UserService {
   }
 
   public delete(user: User) {
-    this.api.delete<User>('users/' + user.id).subscribe(
+    this.api.delete<void>('users/' + user.id).subscribe(
       res => {
         console.log('[DEBUG] Deleted user: ' + user.email);
       }, err => {

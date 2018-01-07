@@ -5,7 +5,7 @@
       <mat-header-cell *matHeaderCellDef>Naam</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-form-field>
-          <input matInput [(ngModel)]="element.name" #name="ngModel" />
+          <input matInput [(ngModel)]="element.name" (change)="onUpdate(element)" #name="ngModel" />
         </mat-form-field>
       </mat-cell>
     </ng-container>
@@ -14,7 +14,7 @@
       <mat-header-cell *matHeaderCellDef>Foto URL</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-form-field>
-          <input matInput [(ngModel)]="element.imgUrl" #zipcode="ngModel" />
+          <input matInput [(ngModel)]="element.imgUrl" (change)="onUpdate(element)" #zipcode="ngModel" />
         </mat-form-field>
       </mat-cell>
     </ng-container>
@@ -23,7 +23,7 @@
       <mat-header-cell *matHeaderCellDef>Omschrijving</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-form-field>
-          <input matInput [(ngModel)]="element.description" #street="ngModel" />
+          <input matInput [(ngModel)]="element.description" (change)="onUpdate(element)" #street="ngModel" />
         </mat-form-field>
       </mat-cell>
     </ng-container>
@@ -32,7 +32,7 @@
       <mat-header-cell *matHeaderCellDef>Prijs</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-form-field>
-          <input matInput [(ngModel)]="element.price" #email="ngModel"  />
+          <input matInput [(ngModel)]="element.price" (change)="onUpdate(element)" #email="ngModel"  />
         </mat-form-field>
       </mat-cell>
     </ng-container>

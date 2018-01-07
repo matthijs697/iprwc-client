@@ -36,9 +36,12 @@ export class ProductService {
     }
   }
 
-  public logout() {
-    this.authService.deleteAuthorization();
-    this.goHome();
+  public update(product: Product) {
+    this.api.put('products/' + product.id, product);
+  }
+
+  public delete(produtct: Product) {
+    this.api.delete('products/' + produtct.id).subscribe();
   }
 
   private goHome() {
@@ -49,7 +52,4 @@ export class ProductService {
     this.router.navigate(['products']);
   }
 
-  public delete(produtct: Product) {
-    this.api.delete('products/' + produtct.id).subscribe();
-  }
 }

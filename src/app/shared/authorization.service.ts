@@ -9,6 +9,7 @@ export class AuthorizationService {
     private authenticator: User = null;
 
     public authorized$ = new Subject<boolean>();
+    public authenticator$ = new Subject<User>();
 
     constructor() {
         this.restoreAuthorization();
@@ -42,6 +43,7 @@ export class AuthorizationService {
         storage.setItem('authorization', authorizationString);
 
         this.authorized$.next(true);
+        this.authenticator$.next(this.authenticator);
     }
 
     private restoreAuthorization(): void {
@@ -59,6 +61,7 @@ export class AuthorizationService {
             this.authenticator = authorization['authenticator'];
 
             this.authorized$.next(true);
+            this.authenticator$.next(this.authenticator);
         }
     }
 
@@ -71,6 +74,7 @@ export class AuthorizationService {
         localStorage.removeItem('authorization');
 
         this.authorized$.next(false);
+        this.authenticator$.next(null);
     }
 
     public createAuthorizationString(): string {

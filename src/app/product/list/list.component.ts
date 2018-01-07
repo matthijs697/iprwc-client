@@ -38,4 +38,8 @@ export class ListProductComponent {
       this.getProductsList();
     }, 1000);
   }
+
+  onUpdate(element: Product) {
+    this.productService.update(element);
+  }
 }

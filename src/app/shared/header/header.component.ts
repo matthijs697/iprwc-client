@@ -22,8 +22,13 @@ export class HeaderComponent {
             this.authenticated = authorized;
         }
     );
-    this.authenticator = authService.getAuthenticator();
-    console.log(this.authenticator.role);
+    this.authService.authenticator$.subscribe(
+      authenticator => {
+        this.authenticator = authenticator;
+      }
+    );
+    // this.authenticator = authService.getAuthenticator();
+    // console.log(this.authenticator.role);
   }
 
   public goHome() {
