@@ -12,6 +12,12 @@
   max-width: 300px;
 }
 
+.product-image-container{
+  padding-top: 25px;
+  max-height: 400px;
+  min-height: 400px;
+}
+
 .product-image {
-  max-height: 200px;
+  height: 400px;
 }

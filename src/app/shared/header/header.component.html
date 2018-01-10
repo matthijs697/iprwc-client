@@ -1,9 +1,9 @@
-<mat-toolbar color="primary">
-  <span routerLink="/" class="clickable">Lorem Ipsum applicatie</span>
+<mat-toolbar class="mat-elevation-z10" color="primary">
+  <span routerLink="/" class="clickable">Tommy Hilfiger</span>
   <span class="fill-remaining-space"></span>
   <div>
     <button mat-icon-button matTooltip="Naar hoofdpagina" (click)="goHome()"><mat-icon>home</mat-icon></button>
-    <button *ngIf="authenticated" mat-icon-button matTooltip="Naar winkelwagen {{authenticator.cart.length}}" (click)="goCart()"><mat-icon>shopping_cart</mat-icon></button>
+    <button *ngIf="authenticated" mat-icon-button matTooltip="Naar winkelwagen" (click)="goCart()"><mat-icon>shopping_cart</mat-icon></button>
     <button *ngIf="authenticator !== null && authenticator.role == 'ADMIN'" mat-icon-button matTooltip="Beheer gebruikers" (click)="goUsers()"><mat-icon>group</mat-icon></button>
     <button *ngIf="authenticator !== null && authenticator.role == 'ADMIN'" mat-icon-button matTooltip="Beheer producten" (click)="goProducts()"><mat-icon>perm_media</mat-icon></button>
     <button *ngIf="authenticated" mat-icon-button matTooltip="Log uit" (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>

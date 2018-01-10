@@ -5,6 +5,7 @@ import {Product} from '../product';
 import {AuthorizationService} from '../../shared/authorization.service';
 import {User} from '../../user/user';
 import {CartItem} from '../../cart/cart-item';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'product-list',
@@ -16,7 +17,7 @@ export class OverviewProductComponent {
   products = null;
   authenticator: User = null;
 
-  constructor(private productService: ProductService, private authService: AuthorizationService) {
+  constructor(private productService: ProductService, private authService: AuthorizationService, private snackbar: MatSnackBar) {
     this.authenticator = authService.getAuthenticator();
     authService.authenticator$.subscribe(
       auth => {
@@ -48,7 +49,9 @@ export class OverviewProductComponent {
     if (!added) {
       this.authenticator.cart.push(new CartItem(product, 1));
     }
-    console.log(JSON.stringify(this.authenticator));
     this.authService.storeAuthorization(this.authenticator, false);
+    this.snackbar.open('Product toegevoegd aan winkelwagen!', 'Sluiten', {
+      duration: 2000
+    });
   }
 }

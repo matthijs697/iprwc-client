@@ -6,8 +6,8 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {
-  MatButtonModule, MatCardModule, MatDialogModule, MatGridListModule, MatIconModule, MatInputModule, MatTableModule, MatToolbarModule,
-  MatTooltipModule, NoConflictStyleCompatibilityMode
+  MatButtonModule, MatCardModule, MatDialogModule, MatGridListModule, MatIconModule, MatInputModule, MatSnackBarModule,
+  MatTableModule, MatToolbarModule, MatTooltipModule, NoConflictStyleCompatibilityMode
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import 'hammerjs';
@@ -29,6 +29,7 @@ export const publicModules = [
   MatIconModule,
   MatTooltipModule,
   MatDialogModule,
+  MatSnackBarModule,
   FlexLayoutModule
 ];
 

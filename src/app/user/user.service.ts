@@ -17,16 +17,16 @@ export class UserService {
 
   public register(user: User): void {
     let data = {
+      email: user.email,
+      password: user.password,
+      role: 'GUEST',
       firstname: user.firstname,
       suffix: user.suffix,
       lastname: user.lastname,
-      zipcpde: user.zipcode,
+      zipcode: user.zipcode,
       street: user.street,
-      email: user.email,
-      password: user.password,
-      role: 'GUEST'
+      active: true
     };
-
     this.api.post<void>('users', data).subscribe(
         data => {
             this.goHome();
