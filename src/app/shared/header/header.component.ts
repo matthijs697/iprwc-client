@@ -28,28 +28,34 @@ export class HeaderComponent {
         this.authenticator = authenticator;
       }
     );
-    // this.authenticator = authService.getAuthenticator();
-    // console.log(this.authenticator.role);
+    if (this.authenticated) {
+      // this.authenticator.cart = [];
+      console.log(this.authenticator.cart.length);
+    }
   }
 
-  public goHome() {
+  goHome() {
     this.router.navigate(['']);
   }
 
-  public goUsers() {
+  goUsers() {
     this.router.navigate(['users']);
   }
 
-  public logout() {
+  logout() {
     this.authService.deleteAuthorization();
     this.goHome();
   }
 
-  public goProducts() {
+  goProducts() {
     this.router.navigate(['products']);
   }
 
-  public goLogin() {
+  goLogin() {
     this.router.navigate(['login']);
+  }
+
+  goCart() {
+    this.router.navigate(['cart']);
   }
 }

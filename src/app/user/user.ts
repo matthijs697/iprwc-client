@@ -1,3 +1,5 @@
+import {CartItem} from '../cart/cart-item';
+
 export class User {
   constructor(
     public id?: number,
@@ -8,6 +10,7 @@ export class User {
     public street?: string,
     public email?: string,
     public password?: string,
-    public role?: string)
+    public role?: string,
+    public cart: CartItem[] = [])
   { }
 }

@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 
 import {ProductService} from '../product.service';
+import {Product} from '../product';
+import {AuthorizationService} from '../../shared/authorization.service';
+import {User} from '../../user/user';
+import {CartItem} from '../../cart/cart-item';
 
 @Component({
   selector: 'product-list',
@@ -9,9 +13,16 @@ import {ProductService} from '../product.service';
 })
 export class OverviewProductComponent {
 
-  public products = null;
+  products = null;
+  authenticator: User = null;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private authService: AuthorizationService) {
+    this.authenticator = authService.getAuthenticator();
+    authService.authenticator$.subscribe(
+      auth => {
+        this.authenticator = auth;
+      }
+    );
     this.getProductsList();
   }
 
@@ -23,4 +34,21 @@ export class OverviewProductComponent {
     );
   }
 
+  addToCart(product: Product) {
+    let added = false;
+    this.authenticator.cart.forEach(
+      p => {
+        if (p.product.id === product.id) {
+          p.amount += 1;
+          added = true;
+          return;
+        }
+      }
+    );
+    if (!added) {
+      this.authenticator.cart.push(new CartItem(product, 1));
+    }
+    console.log(JSON.stringify(this.authenticator));
+    this.authService.storeAuthorization(this.authenticator, false);
+  }
 }

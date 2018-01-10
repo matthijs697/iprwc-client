@@ -3,9 +3,9 @@
   <span class="fill-remaining-space"></span>
   <div>
     <button mat-icon-button matTooltip="Naar hoofdpagina" (click)="goHome()"><mat-icon>home</mat-icon></button>
-    <button mat-icon-button matTooltip="Naar winkelwagen" ><mat-icon>shopping_cart</mat-icon></button>
-    <button mat-icon-button matTooltip="Beheer gebruikers" (click)="goUsers()" *ngIf="authenticator !== null && authenticator.role == 'ADMIN'"><mat-icon>group</mat-icon></button>
-    <button mat-icon-button matTooltip="Beheer producten" (click)="goProducts()" *ngIf="authenticator !== null && authenticator.role == 'ADMIN'"><mat-icon>perm_media</mat-icon></button>
+    <button *ngIf="authenticated" mat-icon-button matTooltip="Naar winkelwagen {{authenticator.cart.length}}" (click)="goCart()"><mat-icon>shopping_cart</mat-icon></button>
+    <button *ngIf="authenticator !== null && authenticator.role == 'ADMIN'" mat-icon-button matTooltip="Beheer gebruikers" (click)="goUsers()"><mat-icon>group</mat-icon></button>
+    <button *ngIf="authenticator !== null && authenticator.role == 'ADMIN'" mat-icon-button matTooltip="Beheer producten" (click)="goProducts()"><mat-icon>perm_media</mat-icon></button>
     <button *ngIf="authenticated" mat-icon-button matTooltip="Log uit" (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
     <button *ngIf="!authenticated" mat-icon-button matTooltip="Log in" (click)="goLogin()"><mat-icon>power_settings_new</mat-icon></button>
   </div>

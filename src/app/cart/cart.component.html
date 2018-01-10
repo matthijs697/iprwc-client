@@ -1,0 +1,40 @@
+<h1>Winkelwagen</h1>
+<div class="user-list mat-elevation-z8" *ngIf="hasData()">
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Naam</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.product.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Omschrijving</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.product.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef>Prijs</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.product.price}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef>Aantal</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput type="number" [(ngModel)]="element.amount" (change)="onUpdate()"/>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="onDelete(element)"><mat-icon>delete</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+</div>
+

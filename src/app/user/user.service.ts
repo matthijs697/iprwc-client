@@ -16,19 +16,18 @@ export class UserService {
   }
 
   public register(user: User): void {
-    user.role = 'GUEST';
-    // let data = {
-    //   firstname: user.firstname,
-    //   suffix: user.suffx,
-    //   lastname: user.lastname,
-    //   zipcpde: user.zipcode,
-    //   street: user.street,
-    //   email: user.email,
-    //   password: user.password,
-    //   role: 'GUEST'
-    // };
+    let data = {
+      firstname: user.firstname,
+      suffix: user.suffix,
+      lastname: user.lastname,
+      zipcpde: user.zipcode,
+      street: user.street,
+      email: user.email,
+      password: user.password,
+      role: 'GUEST'
+    };
 
-    this.api.post<void>('users', user).subscribe(
+    this.api.post<void>('users', data).subscribe(
         data => {
             this.goHome();
         }, error => {
@@ -41,8 +40,9 @@ export class UserService {
     this.authService.setAuthorization(user.email, user.password);
     this.api.get<User>('users/me').subscribe(
         authenticator => {
-            this.authService.storeAuthorization(authenticator, remember);
-            this.goHome();
+          authenticator.cart = [];
+          this.authService.storeAuthorization(authenticator, remember);
+          this.goHome();
         },error => {
             alert('Het inloggen is mislukt');
         }

@@ -28,7 +28,7 @@ export class AuthorizationService {
         this.password = password;
     }
 
-    public storeAuthorization(authenticator: Object, local: boolean) {
+    public storeAuthorization(authenticator: User, local: boolean) {
         this.authenticator = authenticator;
 
         let authorization = {
@@ -85,7 +85,7 @@ export class AuthorizationService {
         return this.authenticator;
     }
 
-    public setAuthenticator(authenticator: Object): void {
+    public setAuthenticator(authenticator: User): void {
         this.authenticator = authenticator;
     }
 }
