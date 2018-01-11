@@ -16,19 +16,12 @@ export class ProductService {
     return this.api.get<Product[]>('products');
   }
 
-  public createProduct(product: Product): void {
+  public createProduct(product: Product, callback: () => void): void {
     if (this.authService.hasAuthorization()) {
-      // let data = {
-      //   id: product.id,
-      //   name: product.name,
-      //   description: product.description,
-      //   imgUrl: product.imgUrl,
-      //   price: product.price
-      // };
-
       this.api.post<void>('products', product).subscribe(
         data => {
           this.goProducts();
+          callback();
         }, error => {
           alert('Maken van nieuw product mislukt');
         }
@@ -40,7 +33,7 @@ export class ProductService {
     this.api.put<Product>('products/' + product.id, product).subscribe();
   }
 
-  public delete(produtct: Product) {
+  public delete(produtct: Product, callback: () => void) {
     this.api.delete('products/' + produtct.id).subscribe();
   }
 

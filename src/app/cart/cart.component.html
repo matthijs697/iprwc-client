@@ -1,5 +1,5 @@
 <h1>Winkelwagen</h1>
-<div class="user-list mat-elevation-z8" *ngIf="hasData()">
+<div class="user-list mat-elevation-z5" *ngIf="hasData()">
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Naam</mat-header-cell>
@@ -20,7 +20,7 @@
       <mat-header-cell *matHeaderCellDef>Aantal</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-form-field>
-          <input matInput type="number" [(ngModel)]="element.amount" (change)="onUpdate()"/>
+          <input matInput type="number" min="1" [(ngModel)]="element.amount" (change)="onUpdate()"/>
         </mat-form-field>
       </mat-cell>
     </ng-container>
@@ -35,6 +35,15 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-
 </div>
+
+<mat-card class="mat-elevation-z5">
+  <mat-card-title fxLayoutAlign="end center">Totaal prijs</mat-card-title>
+  <mat-card-content fxLayoutAlign="end center" fxLayoutGap="20px">
+    <button mat-raised-button color="primary" (click)="onOrder()">Bestel</button>
+    <div>
+      {{totalPrice}} Euro
+    </div>
+  </mat-card-content>
+</mat-card>
 

@@ -26,17 +26,11 @@
       </mat-error>
     </mat-form-field>
 
-    <!--<button mat-raised-button type="submit" class="mat-primary" [disabled]="!registerForm.valid">Registreren</button>-->
-
-    <div mat-dialog-actions fxLayoutAlign="end center">
-      <button mat-button (click)="onNoClick()">Annuleren</button>
-      <button mat-button [mat-dialog-close]="data.product" [disabled]="!newProductForm.valid" cdkFocusInitial>Aanmaken</button>
-    </div>
   </form>
 
-  <!--<p>What's your favorite animal?</p>-->
-  <!--<mat-form-field>-->
-    <!--<input matInput tabindex="1" [(ngModel)]="data.animal">-->
-  <!--</mat-form-field>-->
+  <div mat-dialog-actions fxLayoutAlign="end center">
+    <button mat-button (click)="onNoClick()">Annuleren</button>
+    <button mat-button [mat-dialog-close]="data.product" [disabled]="!newProductForm.valid" cdkFocusInitial>Aanmaken</button>
+  </div>
 </div>
 

@@ -28,10 +28,6 @@ export class HeaderComponent {
         this.authenticator = authenticator;
       }
     );
-    if (this.authenticated) {
-      // this.authenticator.cart = [];
-      console.log(this.authenticator.cart.length);
-    }
   }
 
   goHome() {

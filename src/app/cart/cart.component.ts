@@ -17,6 +17,7 @@ export class CartComponent {
   public displayedColumns = ['name', 'description', 'price', 'amount', 'actions'];
   authenticated: boolean;
   authenticator: User = null;
+  totalPrice: number = 0;
   public dataSource: CartDataSource = null;
 
   constructor(private authService: AuthorizationService) {
@@ -27,6 +28,9 @@ export class CartComponent {
       }
     );
     this.getCartList();
+    this.authenticator.cart.forEach(entry => {
+      this.totalPrice += entry.amount * entry.product.price;
+    });
   }
 
   private getCartList() {
@@ -45,6 +49,10 @@ export class CartComponent {
 
   onUpdate() {
     this.authService.storeAuthorization(this.authenticator, false);
+    this.totalPrice = 0;
+    this.authenticator.cart.forEach(entry => {
+      this.totalPrice += entry.amount * entry.product.price;
+    });
   }
 
   onDelete(cartItem: CartItem) {
@@ -52,6 +60,14 @@ export class CartComponent {
     if (index !== -1) {
       this.authenticator.cart.splice(index, 1);
     }
+    this.getCartList();
+
+  }
+
+  onOrder() {
+    this.authenticator.cart = [];
+    this.authService.storeAuthorization(this.authenticator, false);
+    this.totalPrice = 0;
     this.getCartList();
   }
 

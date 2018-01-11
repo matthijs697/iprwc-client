@@ -32,10 +32,9 @@ export class ListUserComponent {
   }
 
   onDelete(element: User) {
-    this.userService.delete(element);
-    setTimeout(callback => {
+    this.userService.delete(element, () => {
       this.getUsersList();
-    }, 1000);
+    });
   }
 
   onUpdate(element: User) {

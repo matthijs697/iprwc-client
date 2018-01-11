@@ -32,16 +32,15 @@ export class ListProductComponent {
   openDialog(): void {
     let dialogRef = this.dialog.open(CreateProductComponent, {
       width: '500px',
+      height: 'auto',
       data: { product: new Product(), canceled: false }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if (result) {
-        this.productService.createProduct(result);
-        setTimeout(callback => {
+        this.productService.createProduct(result, () => {
           this.getProductsList();
-        }, 1000);
+        });
       }
     });
   }
@@ -51,10 +50,9 @@ export class ListProductComponent {
   }
 
   onDelete(element: Product) {
-    this.productService.delete(element);
-    setTimeout(callback => {
+    this.productService.delete(element, () => {
       this.getProductsList();
-    }, 1000);
+    });
   }
 
   onUpdate(element: Product) {

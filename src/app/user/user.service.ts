@@ -52,7 +52,6 @@ export class UserService {
   public update(user: User) {
     this.api.put<User>('users/' + user.id, user).subscribe(
       res => {
-        console.log('[DEBUG] Updated user: ' + res.email);
       }, err => {
         console.log(err.message);
       }
@@ -68,10 +67,10 @@ export class UserService {
     this.router.navigate(['']);
   }
 
-  public delete(user: User) {
+  public delete(user: User, callback: () => void) {
     this.api.delete<void>('users/' + user.id).subscribe(
       res => {
-        console.log('[DEBUG] Deleted user: ' + user.email);
+        callback();
       }, err => {
         console.log(err.message);
       }
